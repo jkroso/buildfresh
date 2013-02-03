@@ -4,7 +4,7 @@ Automatically run a command and reload your browser when files change
 
 ## Getting Started
 
-	$ npm install jkroso/buildfresh --save
+	$ npm install jkroso/buildfresh -g
 
 ## Basic Usage
 
