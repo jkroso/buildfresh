@@ -1033,7 +1033,7 @@ __less = LessPlugin = (function() {
 // startup
 var CustomEvents, LiveReload, k;
 CustomEvents = __customevents;
-LiveReload = window.LiveReload = new (__livereload.LiveReload)(window);
+LiveReload = new (__livereload.LiveReload)(window);
 for (k in window) {
   if (k.match(/^LiveReloadPlugin/)) {
     LiveReload.addPlugin(window[k]);

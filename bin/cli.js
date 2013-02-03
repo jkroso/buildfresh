@@ -110,7 +110,7 @@ fsmonitor.watch(program.directory, filter, function(change) {
 	debug("Change detected:\n" + change)
 
 	debug('Running command: "%s"', command)
-	exec(command, {stdio: 'inherit'}, function (err) {
+	exec(command, {stdio: 'inherit', maxBuffer: 2000*1024}, function (err) {
 		if (err) throw err
 		var file = change.modifiedFiles[0] || ''
 		// Refresh the browser
