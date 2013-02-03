@@ -11,7 +11,15 @@ program.version(require('../package').version)
 	.option('-e, --exclude <regexp>', 'a regexp to match against file paths', RegExp)
 	.option('-i, --include <regexp>', 'a regexp to match against file paths', RegExp)
 	.option('-v, --verbose', 'show whats going on')
-	.parse(process.argv)
+
+program.on('--help', function () {
+	console.log('  Example: monitor the "src" sub-folder and run `make dist/file.js`:')
+	console.log('')
+	console.log('     $ buildfresh -d src make dist/file.js')
+	console.log('')
+})
+
+program.parse(process.argv)
 
 // the env has to be set before loading the submodules
 // which use debug statements
