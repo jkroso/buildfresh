@@ -1,0 +1,33 @@
+{
+  "name": "buildfresh",
+  "version": "0.1.0",
+  "description": "Runs a command then reloads your browser when files change",
+  "dependencies": {
+    "livereload-server": "~0.2.1",
+    "commander": "~1.1.1",
+    "fsmonitor": "~0.2.0",
+    "debug": "~0.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "make test"
+  },
+  "bin": {
+    "buildfresh": "bin/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jkroso/buildfresh.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jkroso/buildfresh/issues"
+  },
+  "keywords": [
+    "reload",
+    "livereload",
+    "watch",
+    "front end"
+  ],
+  "author": "Jakeb Rosoman",
+  "license": "MIT"
+}
