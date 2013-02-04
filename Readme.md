@@ -2,9 +2,11 @@
 
 Automatically run a command and reload your browser when files change
 
-## Getting Started
+## Installation
 
 	$ npm install jkroso/buildfresh -g
+
+Then download and install the [liveReload plugin](http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-) for your browser. Plugins are available for firefox, safari, and chrome. If you need others you can just add the [liveReload script](livereload.js) directly to your page. If your want to develop for several browsers at the time that should work fine, all connected browsers get refreshed at each change.
 
 ## Basic Usage
 

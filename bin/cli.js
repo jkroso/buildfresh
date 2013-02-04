@@ -84,7 +84,7 @@ server.on('error', function(err, connection) {
 
 server.on('livereload.js', function(request, response) {
 	debug("Serving livereload.js.")
-	fs.readFile(require.resolve('./livereload'), 'utf8', function(err, data) {
+	fs.readFile(require.resolve('../livereload'), 'utf8', function(err, data) {
 		if (err) throw err
 		response.writeHead(200, {'Content-Length': data.length, 'Content-Type': 'text/javascript'})
 		response.end(data)
