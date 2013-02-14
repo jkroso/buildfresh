@@ -15,7 +15,7 @@ program.version(require('../package').version)
 program.on('--help', function () {
 	console.log('  Example: monitor the "src" sub-folder and run `make dist/file.js`:')
 	console.log('')
-	console.log('     $ buildfresh -d src make dist/file.js')
+	console.log('     $ bfresh -d src make dist/file.js')
 	console.log('')
 })
 
@@ -27,7 +27,7 @@ if (program.verbose) process.env.DEBUG = '*'
 
 var fsmonitor = require('fsmonitor')
   , LiveReloadServer = require('livereload-server')
-  , debug = require('debug')('buildfresh')
+  , debug = require('debug')('bfresh')
 
 // default to CWD
 if (!program.directory) program.directory = process.cwd()

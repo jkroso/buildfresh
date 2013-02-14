@@ -10,25 +10,25 @@ Then download and install the [liveReload plugin](http://feedback.livereload.com
 
 ## Basic Usage
 
-The simplest possible case is `buildfresh` followed by whatever you normal build command is
+The simplest possible case is `bfresh` followed by whatever you normal build command is
 
-	$ buildfresh make
+	$ bfresh make
 
 I will monitor __all__ files within the current working and run `make` whenever one changes before sending a signal to liveReload to refresh the browser. Often this won't be good enough though since if the built file is within the CWD it will trigger another file change event and thereby start an infinite loop. To prevent this you can reduce the files being monitored in a number of ways. 
 
 ### Selecting the top level directory
 
-	$ buildfresh -d src
+	$ bfresh -d src
 
 Will not look at anything above `$CWD/src/`. In a lot of cases this will be enough but if not you also have some filtering options. See below.
 
 ### Filtering files
 
-	$ buildfresh -e node_modules\|public
+	$ bfresh -e node_modules\|public
 
 Will prevent files with either "node_modules" or "public" in their path from being watched. Its a good idea to exclude "node_modules" anyway since it could slow things down if their are a lot of them.
 
-	$ buildfresh -i app
+	$ bfresh -i app
 
 Will monitor only files with "app" somewhere in their path
 

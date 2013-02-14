@@ -9,7 +9,7 @@
     "debug": "~0.7.0"
   },
   "bin": {
-    "buildfresh": "bin/cli.js"
+    "bfresh": "bin/cli.js"
   },
   "repository": {
     "type": "git",
