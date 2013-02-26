@@ -8,7 +8,7 @@ var program = require('commander')
 program.version(require('../package').version)
 	.usage('[options] <command> to run before reloading the browser')
 	.option('-d, --directory <path>', 'absolute or relative to the CWD', path.resolve)
-	.option('-e, --exclude <regexp>', 'a regexp to match against file paths', RegExp)
+	.option('-x, --exclude <regexp>', 'a regexp to match against file paths', RegExp)
 	.option('-i, --include <regexp>', 'a regexp to match against file paths', RegExp)
 	.option('-v, --verbose', 'show whats going on')
 
@@ -55,11 +55,9 @@ if (program.include || program.exclude) {
 }
 
 var server = new LiveReloadServer({
-	// identifies your app
 	id: "component",
 	name: "development",
 	version: "1.0",
-	// protocols specifies the versions of subprotocols you support
 	protocols: {
 		monitoring: 7,
 		saving: 1
@@ -101,25 +99,37 @@ server.listen(function(err) {
 	else console.warn("Listening on port %d.", server.port)
 })
 
+console.warn('Watching directory: %s', program.directory)
+
 /*!
  * Watch for changes
  */
-console.warn('Watching directory: %s', program.directory)
 
 fsmonitor.watch(program.directory, filter, function(change) {
 	debug("Change detected:\n" + change)
 
+	var connections = Object.keys(server.connections).map(function (id) {
+		return server.connections[id]
+	})
+
 	debug('Running command: "%s"', command)
+	
 	exec(command, {stdio: 'inherit', maxBuffer: 2000*1024}, function (err) {
 		if (err) throw err
 		var file = change.modifiedFiles[0] || ''
 		// Refresh the browser
 		connections.forEach(function (con) {
-			con.send({command:'reload', path:file, liveCSS:true})
+			try {
+				con.send({
+					command:'reload', 
+					path:file, 
+					liveCSS:true
+				})
+			} catch (e) {
+				console.warn(e.message)
+			}
 		})
 	})
-	var connections = Object.keys(server.connections).map(function (id) {
-		return server.connections[id]
-	})
+
 	if (!connections.length) console.warn('No browsers connected')
 })
