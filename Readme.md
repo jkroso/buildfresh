@@ -24,7 +24,7 @@ Will not look at anything above `$CWD/src/`. In a lot of cases this will be enou
 
 ### Filtering files
 
-	$ bfresh -e node_modules\|public
+	$ bfresh -x node_modules\|public
 
 Will prevent files with either "node_modules" or "public" in their path from being watched. Its a good idea to exclude "node_modules" anyway since it could slow things down if their are a lot of them.
 
