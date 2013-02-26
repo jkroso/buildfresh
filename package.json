@@ -1,6 +1,6 @@
 {
   "name": "buildfresh",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Runs a command then reloads your browser when files change",
   "dependencies": {
     "livereload-server": "~0.2.1",
