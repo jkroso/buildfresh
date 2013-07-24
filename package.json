@@ -1,12 +1,12 @@
 {
   "name": "buildfresh",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Runs a command then reloads your browser when files change",
   "dependencies": {
-    "livereload-server": "~0.2.1",
-    "commander": "~1.1.1",
-    "fsmonitor": "~0.2.0",
-    "debug": "~0.7.0"
+    "livereload-server": "0.2.3",
+    "commander": "1.2.0",
+    "fsmonitor": "0.2.2",
+    "debug": "0.7.2"
   },
   "bin": {
     "bfresh": "bin/cli.js"
