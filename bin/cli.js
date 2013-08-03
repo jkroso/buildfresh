@@ -114,8 +114,9 @@ fsmonitor.watch(program.directory, filter, function(change) {
 
 	debug('Running command: "%s"', command)
 	
-	exec(command, {stdio: 'inherit', maxBuffer: 2000*1024}, function (err) {
+	exec(command, {stdio: 'inherit', maxBuffer: 2000*1024}, function (err, stdout, stderr) {
 		if (err) throw err
+		if (stderr) console.error(stderr)
 		var file = change.modifiedFiles[0] || ''
 		// Refresh the browser
 		connections.forEach(function (con) {
